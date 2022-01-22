@@ -64,6 +64,11 @@ public class Window {
         if (glfwWindow == NULL){
             throw new IllegalStateException("Failed to create the GLFW window.");
         }
+        // :: is a lambda function, forwards to a function
+        glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
+        glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
+        glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
+        glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
 
         // Make the OpenGL context current
         glfwMakeContextCurrent(glfwWindow);
