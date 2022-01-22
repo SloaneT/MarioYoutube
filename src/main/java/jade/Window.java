@@ -3,6 +3,7 @@ package jade;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
+import util.Time;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
@@ -18,6 +19,10 @@ public class Window {
     private boolean fadeToBlack = false;
 
     private static Window window = null;
+
+
+    private static Scene currentScene;
+
     private Window() {
         this.width = 1920;
         this.height = 1080;
@@ -26,6 +31,21 @@ public class Window {
         b = 1;
         g = 1;
         a = 1;
+    }
+
+    public static void changeScene(int newScene) {
+        switch (newScene) {
+            case 0:
+               currentScene = new LevelEditorScene();
+               // currentScene.init();
+                break;
+            case 1:
+                currentScene = new LevelScene();
+                break;
+            default:
+                assert false: "Unknown scene '" + newScene + "'";
+                break;
+        }
     }
 
     public static Window get() {
@@ -89,6 +109,9 @@ public class Window {
     }
 
     public void loop() {
+        float beginTime = Time.getTime();
+        float endTime = Time.getTime();
+
         while (!glfwWindowShouldClose(glfwWindow)){
             // Poll events
             glfwPollEvents();
@@ -104,10 +127,15 @@ public class Window {
 
             if(KeyListener.isKeyPressed(GLFW_KEY_SPACE)) {
                 fadeToBlack = true;
-                
+
             }
 
             glfwSwapBuffers(glfwWindow);
+
+            // Calculates the amount of time each game loop ^^^ takes
+            endTime = Time.getTime();
+            float dt = endTime - beginTime;
+            beginTime = endTime;
         }
     }
 }
