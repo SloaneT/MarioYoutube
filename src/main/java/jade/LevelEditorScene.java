@@ -2,6 +2,7 @@ package jade;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL20;
+import renderer.Shader;
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -59,7 +60,7 @@ public class LevelEditorScene extends Scene{
     private int vaoID, vboID, eboID; // vertex array object, " buffer ", element buffer "
 
     public LevelEditorScene(){
-
+        Shader testShader = new Shader("assets/shaders/default.glsl");
     }
 
     @Override

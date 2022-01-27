@@ -50,6 +50,9 @@ public class Shader {
             e.printStackTrace();
             assert false : "Error: Could not open file for shader: '" + filepath + "'";
         }
+
+        System.out.println(vertexSource);
+        System.out.println(fragmentSource);
     }
 
     public void compile() {
