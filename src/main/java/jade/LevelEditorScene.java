@@ -39,7 +39,7 @@ public class LevelEditorScene extends Scene{
         // position                 // color
              0.5f, -0.5f, 0.0f,     1.0f, 0.0f, 0.0f, 1.0f, // Bottom right 0
             -0.5f, 0.5f, 0.0f,      0.0f, 1.0f, 0.0f, 1.0f, // Top left 1
-             0.5f, 0.5f, 0.0f,      1.0f, 0.0f, 1.0f, 1.0f, // Top right 2
+             0.5f, 0.5f, 0.0f,      0.0f, 0.0f, 1.0f, 1.0f, // Top right 2
             -0.5f, -0.5f, 0.0f,     1.0f, 1.0f, 0.0f, 1.0f, // Bottom left 3
     };
 
